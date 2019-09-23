@@ -12,6 +12,18 @@ def path(hash, key, visited)
   path(hash, hash[key].first, visited)
 end
 
+# model solution
+def graph(hash_graph)
+  # write your code here
+  next_node = 0
+  result = [0]
+  while next_node != 4
+    next_node = hash_graph[next_node].first
+    result << next_node
+  end
+  result
+end
+
 hash = {
   0 => [2],
   1 => [4],
