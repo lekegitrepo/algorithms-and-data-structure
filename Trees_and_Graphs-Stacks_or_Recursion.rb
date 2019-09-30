@@ -18,7 +18,7 @@ def tree_height(tree_as_list)
 end
 
 def max(a, b)
-  a - b
+  a > b ? a : b
 end
 
 puts tree_height([2, 7, 5, 2, 6, 0, 9])
