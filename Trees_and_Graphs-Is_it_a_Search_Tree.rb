@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Node
   attr_reader :data
   attr_accessor :left, :right
-  
-  def initialize data
+
+  def initialize(data)
     @data = data
   end
 end
@@ -10,15 +12,15 @@ end
 def array_to_tree(array, index = 0)
   # use your function from the previous challenge
   return nil if i >= array.length || array[index] == 0
+
   node = Node.new(array[index])
-    node.left = array_to_tree(array, 2 * index + 1)
-    node.right = array_to_tree(array, 2 * index + 2)
+  node.left = array_to_tree(array, 2 * index + 1)
+  node.right = array_to_tree(array, 2 * index + 2)
 end
 
 def search_tree?(array)
   root = array_to_tree(array)
   # write your code here
-  
 end
 
 puts search_tree?([10, 4, 12])
