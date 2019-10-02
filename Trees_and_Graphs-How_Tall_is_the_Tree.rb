@@ -1,11 +1,21 @@
 # frozen_string_literal: true
 
+#this method works.
 # def binary_tree_height(array_tree, indx = 0)
 #   return 0 if indx >= array_tree.length || (array_tree[indx]).zero?
 
 #   # write your code here
 #   1 + max(binary_tree_height(array_tree, 2 * indx + 1), binary_tree_height(array_tree, 2 * indx + 2))
 # end
+
+class Node
+  attr_reader :data
+  attr_accessor :left, :right
+
+  def initialize(data)
+    @data = data
+  end
+end
 
 def binary_tree_height(array_tree)
   tree_node = array_to_tree(array_tree)
@@ -14,7 +24,8 @@ end
 
 def recursive_tree_height(tree)
   return 0 if tree.nil?
-  return 1 if tree.left == nil && tree.right == nil
+  return 1 if tree.left.nil? && tree.right.nil?
+
   1 + max(recursive_tree_height(tree.left), recursive_tree_height(tree.right))
 end
 
