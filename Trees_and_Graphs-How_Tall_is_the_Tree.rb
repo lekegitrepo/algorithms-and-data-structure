@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#this method works.
+# this method works.
 # def binary_tree_height(array_tree, indx = 0)
 #   return 0 if indx >= array_tree.length || (array_tree[indx]).zero?
 

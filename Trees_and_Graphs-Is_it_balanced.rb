@@ -21,18 +21,34 @@ def array_to_tree(array, index = 0)
   node
 end
 
+def max(num1, num2)
+  num1 > num2 ? num1 : num2
+end
+
 # helper function
 def height(node)
   # use your function from the previous challenge
-  return 0 if tree.nil?
-  return 1 if tree.left.nil? && tree.right.nil?
+  return 0 if node.nil?
+  return 1 if node.left.nil? && node.right.nil?
 
-  1 + max(recursive_tree_height(tree.left), recursive_tree_height(tree.right))
+  1 + max(height(node.left), height(node.right))
+end
+
+def balanced?(node)
+  return true if node.nil?
+
+  left_height = height(node.left)
+  right_height = height(node.right)
+
+  return false if (left_height - right_height).abs > 1
+
+  balanced?(node.left) && balanced?(node.right)
 end
 
 def balanced_tree?(array)
   root = array_to_tree(array)
   # write your code here
+  balanced?(root)
 end
 
 puts balanced_tree?([1, 2, 0, 3, 4, 0, 0])
@@ -40,3 +56,7 @@ puts balanced_tree?([1, 2, 0, 3, 4, 0, 0])
 
 puts balanced_tree?([1, 2, 3, 4, 5, 6, 7])
 # => true
+
+puts balanced_tree?([1, 2, 3, 4, 0, 0, 5, 6, 0, 0, 0, 0, 0, 0, 7])
+
+puts balanced_tree?([1, 2, 3, 0, 0, 4, 5, 0, 0, 0, 0, 6, 0, 7, 8])
