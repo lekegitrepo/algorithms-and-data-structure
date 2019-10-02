@@ -24,7 +24,10 @@ end
 # helper function
 def height(node)
   # use your function from the previous challenge
-  
+  return 0 if tree.nil?
+  return 1 if tree.left.nil? && tree.right.nil?
+
+  1 + max(recursive_tree_height(tree.left), recursive_tree_height(tree.right))
 end
 
 def balanced_tree?(array)
