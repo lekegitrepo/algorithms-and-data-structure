@@ -1,47 +1,68 @@
 # frozen_string_literal: true
 
-def binary_tree_height(array_tree, indx = 0)
-  return 0 if indx >= array_tree.length || (array_tree[indx]).zero?
+# def binary_tree_height(array_tree, indx = 0)
+#   return 0 if indx >= array_tree.length || (array_tree[indx]).zero?
 
-  # write your code here
-  1 + max(binary_tree_height(array_tree, 2 * indx + 1), binary_tree_height(array_tree, 2 * indx + 2))
+#   # write your code here
+#   1 + max(binary_tree_height(array_tree, 2 * indx + 1), binary_tree_height(array_tree, 2 * indx + 2))
+# end
+
+def binary_tree_height(array_tree)
+  tree_node = array_to_tree(array_tree)
+  recursive_tree_height(tree_node)
+end
+
+def recursive_tree_height(tree)
+  return 0 if tree.nil?
+  return 1 if tree.left == nil && tree.right == nil
+  1 + max(recursive_tree_height(tree.left), recursive_tree_height(tree.right))
 end
 
 def max(num1, num2)
   num1 > num2 ? num1 : num2
 end
 
-# model solution
-class Node
-  attr_reader :data
-  attr_accessor :left, :right
+def array_to_tree(array, indx = 0)
+  return nil if indx >= array.length || (array[indx]).zero?
 
-  def initialize(data)
-    @data = data
-  end
-end
-
-def array_to_tree(array, i)
-  return nil if i >= array.length || array[i] == 0
-
-  node = Node.new(array[i])
-  node.left = array_to_tree(array, 2 * i + 1)
-  node.right = array_to_tree(array, 2 * i + 2)
+  node = Node.new(array[indx])
+  node.left = array_to_tree(array, 2 * indx + 1)
+  node.right = array_to_tree(array, 2 * indx + 2)
 
   node
 end
 
-def binary_tree_height(array_tree)
-  # write your code here
-  tree = array_to_tree(array_tree, 0)
-  recursive_tree_height(tree)
-end
+# model solution
+# class Node
+#   attr_reader :data
+#   attr_accessor :left, :right
 
-def recursive_tree_height(tree)
-  return 0 if tree.nil?
-  return 1 if tree.left == nil && tree.right == nil
-  [recursive_tree_height(tree.left), recursive_tree_height(tree.right)].max + 1
-end
+#   def initialize(data)
+#     @data = data
+#   end
+# end
+
+# def array_to_tree(array, i)
+#   return nil if i >= array.length || array[i] == 0
+
+#   node = Node.new(array[i])
+#   node.left = array_to_tree(array, 2 * i + 1)
+#   node.right = array_to_tree(array, 2 * i + 2)
+
+#   node
+# end
+
+# def binary_tree_height(array_tree)
+#   # write your code here
+#   tree = array_to_tree(array_tree, 0)
+#   recursive_tree_height(tree)
+# end
+
+# def recursive_tree_height(tree)
+#   return 0 if tree.nil?
+#   return 1 if tree.left == nil && tree.right == nil
+#   [recursive_tree_height(tree.left), recursive_tree_height(tree.right)].max + 1
+# end
 
 # Test cases
 puts binary_tree_height([2, 7, 5, 2, 6, 0, 9])

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Node
   attr_reader :data
   attr_accessor :left, :right
-  
-  def initialize data
+
+  def initialize(data)
     @data = data
   end
 end
@@ -10,11 +12,19 @@ end
 # helper function
 def array_to_tree(array, index = 0)
   # use your function from the previous challenge
+  return nil if index >= array.length || (array[index]).zero?
+
+  node = Node.new(array[index])
+  node.left = array_to_tree(array, 2 * index + 1)
+  node.right = array_to_tree(array, 2 * index + 2)
+
+  node
 end
 
 # helper function
 def height(node)
   # use your function from the previous challenge
+  
 end
 
 def balanced_tree?(array)
