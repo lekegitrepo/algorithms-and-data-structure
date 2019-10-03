@@ -4,7 +4,6 @@ def connected_graph?(graph)
   # write your code here
   connected = []
   depth_first_search(graph, 0, connected)
-  p connected
   connected.length == graph.keys.length
 end
 
@@ -13,8 +12,35 @@ def depth_first_search(graph, node = 0, visited = [])
   return if visited.include?(node)
 
   visited << node
-  p graph[node].each { |cur_node| depth_first_search(graph, cur_node, visited) }
+  graph[node].each { |cur_node| depth_first_search(graph, cur_node, visited) }
 end
+
+#model solution
+def depth_first_search(graph)
+  # write your code here
+  result = []
+  stack = [0]
+  visited = []
+  
+  while stack.size != 0
+    head = stack.pop
+    result << head
+    visited << head
+
+    not_visited = graph[head].reject { |node| visited.include? node }
+
+    visited += not_visited
+    stack += not_visited.reverse
+  end
+
+  result
+end
+
+def connected_graph?(graph)
+  # write your code here
+  graph.keys.size == depth_first_search(graph).size
+end
+
 
 puts connected_graph?(
   0 => [2],
