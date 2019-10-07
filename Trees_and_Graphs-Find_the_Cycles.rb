@@ -23,6 +23,26 @@ def cycle(graph, node = 0, visited = [])
   false
 end
 
+# model solution
+def graph_cycle?(graph)
+  # write your code here
+  queue = [0]
+  visited = []
+
+  until queue.empty?
+    head = queue.shift
+    visited << head
+
+    not_visited = graph[head].reject { |node| visited.include? node }
+    return true if not_visited.size < (graph[head].size - 1)
+
+    visited += not_visited
+    queue += not_visited
+  end
+
+  false
+end
+
 puts graph_cycle?(
   0 => [2],
   1 => [4],
