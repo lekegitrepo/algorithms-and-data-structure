@@ -64,7 +64,7 @@ def greatest_peaks(map)
       peaks[dfs(i, j, map)] += 1
     end
   end
-  
+
   min = nil
   max = nil
   peaks.each do |_key, value|
@@ -90,3 +90,9 @@ p greatest_peaks(
   ]
 )
 # => [1, 3]
+
+p greatest_peaks([[2, 6, 9, 11], [7, 8, 9, 8], [6, 7, 12, 9], [10, 7, 6, 4]])
+
+p greatest_peaks([[4, 3, 2, 1], [2, 1, 0, 5], [0, 7, 4, 6], [10, 8, 4, 7]])
+
+p greatest_peaks([[3, 6, 9, 11, 3], [5, 8, 12, 4, 6], [7, 10, 13, 2, 14], [0, 1, 5, 9, 3], [2, 8, 6, 4, 0]])
