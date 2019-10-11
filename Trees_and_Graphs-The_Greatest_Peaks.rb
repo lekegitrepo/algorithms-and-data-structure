@@ -64,7 +64,7 @@ def greatest_peaks(map)
       peaks[dfs(i, j, map)] += 1
     end
   end
-  puts peaks
+  
   min = nil
   max = nil
   peaks.each do |_key, value|
