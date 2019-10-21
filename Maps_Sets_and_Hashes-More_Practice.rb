@@ -1,15 +1,27 @@
 # frozen_string_literal: true
 
 def find_pairs(array, k)
-  resut = []
+  arr_pairs = []
 
   (0..(array.length - 1)).each do |i|
     ((i + 1)..(array.length - 1)).each do |j|
-      resut.push(array[i], array[j]) if array[i] + array[j] == k
+      arr_pairs.push(array[i], array[j]) if array[i] + array[j] == k
     end
   end
-  resut.each_slice(2).to_a
+  arr_pairs.each_slice(2).to_a
 end
+
+# model solution
+# def find_pairs(array, k)
+#   # write your code here
+#   pairs = []
+#   array.each_with_index do |x, index|
+#     array[(index + 1)..-1].each do |y|
+#       pairs.push([x, y]) if x + y == k
+#     end
+#   end
+#   pairs
+# end
 
 p find_pairs([1, 9, 11, 13, 2, 3, 7], 12)
 # => [[1, 11], [9, 3]]
