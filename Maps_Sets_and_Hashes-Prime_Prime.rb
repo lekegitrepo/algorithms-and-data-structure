@@ -20,9 +20,6 @@ def prime_prime(array)
   hash_factor = Hash.new(0)
   primes = primes_set(10_000)
 
-  # num_primes = array.select { |p| primes.include?(p) }
-  # p num_primes
-
   array.each do |num|
     primes.each { |prim| hash_factor[prim] += 1 if (num % prim).zero? }
   end
