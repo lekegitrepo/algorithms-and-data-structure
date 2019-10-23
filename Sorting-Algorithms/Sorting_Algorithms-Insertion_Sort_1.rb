@@ -2,7 +2,6 @@
 
 def insertion_sort(array)
   # write your code here
-  puts "#{array}"
   arr_size = array.length
   i = 0
   while i < arr_size
@@ -31,3 +30,15 @@ insertion_sort([1, 4, 6, 9, 3])
 #    1 4 6 6 9
 #    1 4 4 6 9
 #    1 3 4 6 9
+
+puts '-' * 20
+
+ insertion_sort([1, 4, 6, 9, 3])
+
+ puts '-' * 20
+
+ insertion_sort([1, 3, 5, 9, 13, 22, 27, 35, 46, 51, 55, 83, 87, 23])
+
+ puts '-' * 20
+
+ insertion_sort([2, 3, 4, 5, 6, 7, 8, 9, 10, 1])
