@@ -27,12 +27,11 @@
 #     j = i - 1
 #     while j >= 0 && array[j] > curr_val
 #       array[j + 1] = array[j]
-#       puts array.join(' ')
 #       j -= 1
 #     end
 #     array[j + 1] = curr_val
+#     puts array.join(' ')
 #   end
-#   puts array.join(' ')
 #   array
 # end
 
