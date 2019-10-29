@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 # this has a bug
 # def simple_counting_sort(array)
@@ -17,7 +18,7 @@
 def simple_counting_sort(array)
   # write your code here
   max = array.max
-  counts = Array.new(max+1, 0)
+  counts = Array.new(max + 1, 0)
   array.each { |n| counts[n] += 1 }
   (0...counts.size).map { |i| [i] * counts[i] }.flatten
 end
@@ -26,22 +27,22 @@ end
 def simple_counting_sort(array)
   # write your code here
   count_array = get_count_array(array)
-  
+
   ordered_array = []
   count_array.each_with_index do |count, element|
     ordered_array.concat([element] * count)
   end
-  
+
   ordered_array
 end
 
 def get_count_array(numbers)
-    counts = Array.new(100, 0)
-  
+  counts = Array.new(100, 0)
+
   numbers.each do |element|
     counts[element] += 1
   end
-  
+
   counts
 end
 
