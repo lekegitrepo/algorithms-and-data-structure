@@ -1,9 +1,16 @@
 # frozen_string_literal: true
 
+# def counting_sort(array)
+#   # write your code here
+#   arr_counter = []
+#   array.each { |arr| arr_counter[arr].nil? ? arr_counter[arr] = 1 : arr_counter[arr] += 1 }
+#   arr_counter
+# end
+
 def counting_sort(array)
   # write your code here
-  arr_counter = []
-  array.each { |arr| arr_counter[arr].nil? ? arr_counter[arr] = 1 : arr_counter[arr] += 1 }
+  arr_counter = Array.new(array.max + 1, 0)
+  array.each { |arr| arr_counter[arr] += 1 }
   arr_counter
 end
 
