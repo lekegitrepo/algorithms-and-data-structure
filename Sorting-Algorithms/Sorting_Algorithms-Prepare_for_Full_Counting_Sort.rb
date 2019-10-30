@@ -14,6 +14,28 @@ def full_counting_sort_prep(array)
   result
 end
 
+# model solution
+def full_counting_sort_prep(array)
+  # write your code here
+  counts_array = get_counts_array(array)
+  
+  (1...counts_array.size).each do |index|
+    counts_array[index] += counts_array[index - 1]
+  end
+  
+  counts_array
+end
+
+def get_counts_array(numbers)
+  counts = Array.new(100, 0)
+  
+  numbers.each do |element|
+    counts[element.to_i] += 1
+  end
+  
+  counts
+end
+
 p full_counting_sort_prep(
   [
     '4 that', '3 be', '0 to', '1 be', '5 question',
