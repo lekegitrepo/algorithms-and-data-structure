@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def partition(array)
   # write your code here
   pivot = array[0]
@@ -13,6 +15,24 @@ def partition(array)
     i += 1
   end
   left + right
+end
+
+# model solution
+def partition(array)
+  # write your code here
+  pivot = array.first
+  smaller = []
+  greater = []
+
+  array[1..-1].each do |number|
+    if number > pivot
+      greater << number
+    else
+      smaller << number
+    end
+  end
+
+  smaller + [pivot] + greater
 end
 
 p partition([4, 5, 3, 9, 1])
