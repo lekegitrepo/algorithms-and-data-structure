@@ -25,7 +25,7 @@ class LinkedList
 
   def get(index)
     # your code here
-    if index < 0
+    if index.negative?
       nil
     else
       node = @head
